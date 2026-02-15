@@ -5,15 +5,25 @@
   --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
   --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
   --dark-gradient: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-  --light-bg: #f8f9fa;
   --white: #ffffff;
-  --text-dark: #2c3e50;
-  --text-light: #6c757d;
   --shadow-light: 0 5px 15px rgba(0, 0, 0, 0.08);
   --shadow-medium: 0 10px 30px rgba(0, 0, 0, 0.15);
   --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.2);
   --border-radius: 15px;
   --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --card-bg: #ffffff;
+}
+
+body.dark-mode {
+  --bg-primary: #0f172a;
+  --bg-secondary: #111827;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --card-bg: #1e293b;
 }
 
 * {
@@ -23,11 +33,17 @@
 }
 
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Inter', sans-serif;
   line-height: 1.6;
   color: var(--text-dark);
   overflow-x: hidden;
+  background: var(--bg-primary);
 }
+
+p {
+  color: var(--text-secondary);
+}
+
 
 /* Modern Navbar */
 .modern-navbar {
@@ -52,7 +68,6 @@ body {
 }
 
 .navbar-nav .nav-link {
-  color: var(--text-dark) !important;
   font-weight: 500;
   margin: 0 0.5rem;
   position: relative;
@@ -111,6 +126,142 @@ body {
   }
 }
 
+/* ========================= */
+/* DARK MODE SYSTEM */
+/* ========================= */
+
+html {
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Navbar */
+body.dark-mode .modern-navbar {
+  background: rgba(15, 23, 42, 0.95);
+}
+
+/* Sections */
+body.dark-mode .modern-section {
+  background: #111827;
+}
+
+body.dark-mode .section-title {
+  -webkit-text-fill-color: unset;
+  color: #60a5fa;
+}
+
+/* Cards */
+body.dark-mode .about-card,
+body.dark-mode .contact-card,
+body.dark-mode .project-card {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.project-card,
+.about-card,
+.contact-card {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+
+/* Footer */
+body.dark-mode .modern-footer {
+  background: #0f172a;
+}
+
+/* Toggle Button */
+.theme-toggle-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  color: #667eea;
+  cursor: pointer;
+  transition: 0.3s;
+  display: flex; /* Tambahkan ini */
+  align-items: center; /* Tambahkan ini */
+  padding: 0.5rem; /* Tambahkan sedikit ruang klik */
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(20deg);
+}
+
+body.dark-mode .theme-toggle-btn {
+  color: #facc15; /* Warna kuning matahari */
+}
+
+/* ============================= */
+/* TECH DARK CARD (ABOUT) */
+/* ============================= */
+
+.about-tech {
+  background: #f8f9fa;
+}
+
+.tech-card {
+  background: #0f172a;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+  font-family: 'Courier New', monospace;
+  transition: 0.3s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 60px rgba(0,0,0,0.2);
+}
+
+.tech-card-header {
+  background: #1e293b;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.terminal-title {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.tech-card-body {
+  padding: 25px;
+  color: #e2e8f0;
+}
+
+.tech-card pre {
+  margin: 0;
+}
+
+.tech-card code {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Simple syntax highlight */
+.key { color: #38bdf8; }
+.var { color: #facc15; }
+.prop { color: #c084fc; }
+.string { color: #4ade80; }
+
+
 .hero-content {
   position: relative;
   z-index: 2;
@@ -160,6 +311,17 @@ body {
   }
 }
 
+.hero-highlights {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+
 .hero-title {
   font-size: 3.5rem;
   font-weight: 700;
@@ -168,9 +330,30 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.3rem;
-  margin-bottom: 2.5rem;
-  opacity: 0.9;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+  line-height: 1.8;
+}
+
+.hero-typing {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 10px;
+  min-height: 40px;
+}
+
+.hero-typing span {
+  font-weight: 700;
+  border-right: 2px solid white;
+  padding-right: 5px;
+  animation: blinkCursor 0.8s infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { border-color: white; }
+  50% { border-color: transparent; }
 }
 
 .hero-buttons {
@@ -244,7 +427,7 @@ body {
 }
 
 .modern-section:nth-child(even) {
-  background: var(--light-bg);
+  background: var(--bg-secondary);
 }
 
 .section-title {
@@ -255,6 +438,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: var(--text-primary);
 }
 
 .section-divider {
@@ -267,7 +451,6 @@ body {
 
 /* About Section */
 .about-card {
-  background: var(--white);
   border-radius: var(--border-radius);
   padding: 3rem;
   box-shadow: var(--shadow-light);
@@ -295,11 +478,10 @@ body {
 
 /* Projects Section */
 .projects-section {
-  background: var(--light-bg);
+  background: var(--bg-secondary);
 }
 
 .project-card {
-  background: var(--white);
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow-light);
@@ -361,11 +543,11 @@ body {
   font-size: 1.3rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-dark);
+  color: var(--text-primary);
 }
 
 .project-description {
-  color: var(--text-light);
+  color: var(--text-secondary);
   margin-bottom: 1.5rem;
   line-height: 1.6;
 }
@@ -387,7 +569,7 @@ body {
 
 /* Contact Section */
 .contact-card {
-  background: var(--white);
+  background: var(--card-bg);
   border-radius: var(--border-radius);
   padding: 3rem;
   box-shadow: var(--shadow-light);
@@ -409,7 +591,7 @@ body {
 
 .form-label {
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
@@ -491,6 +673,7 @@ body {
 
   .modern-section {
     padding: 60px 0;
+    background: var(--bg-secondary);
   }
 
   .about-card,
@@ -545,13 +728,17 @@ body {
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin-bottom: 0.8rem;
   }
 
   .hero-subtitle {
     font-size: 1rem;
     margin-bottom: 2rem;
+  }
+
+  .hero-typing {
+    font-size: 1.1rem;
   }
 
   .project-content {
@@ -763,4 +950,39 @@ body {
 
 .navbar-toggler:focus {
   box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25); /* Optional: add focus style */
+}
+
+body.dark-mode .modern-navbar .nav-link,
+body.dark-mode .modern-navbar .navbar-brand {
+  color: #ffffff !important;
+}
+
+body.dark-mode .modern-navbar .nav-link:hover {
+  color: #60a5fa !important; /* Warna biru muda saat hover di dark mode */
+}
+
+/* Fix warna teks menu mobile di Dark Mode & Mode Terang */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    background: var(--bg-primary); /* Mengikuti tema background */
+    padding: 1rem;
+    border-radius: 10px;
+    margin-top: 10px;
+    box-shadow: var(--shadow-medium);
+  }
+
+  .nav-link {
+    color: var(--text-primary) !important; /* Memaksa warna teks mengikuti variabel tema */
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  body.dark-mode .nav-link {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+}
+
+/* Memastikan ikon toggler (hamburger) terlihat di Dark Mode */
+body.dark-mode .navbar-toggler {
+  filter: invert(1);
 }

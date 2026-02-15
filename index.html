@@ -6,6 +6,7 @@
     <title>A.P | Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body id="home">
@@ -31,6 +32,11 @@
               <li class="nav-item">
                 <a class="nav-link" href="#contact">Contact</a>
               </li>
+              <li class="nav-item ms-lg-3">
+                <button id="theme-toggle" class="theme-toggle-btn">
+                    <i class="fas fa-moon"></i>
+                </button>
+                </li>
             </ul>
           </div>
         </div>
@@ -42,8 +48,10 @@
                 <img src="img/FullSizeRender.png" alt="Adam Pradana" class="profile-image">
                 <div class="profile-ring"></div>
             </div>
-            <h1 class="hero-title">Adam Pradana</h1>
-            <p class="hero-subtitle">IT Student at Universitas Semarang • Class of 2022</p>
+            <h1 class="hero-title">Hi, i'm Adam Pradana</h1>
+
+            <h2 class="hero-typing">a <span id="changing-text"></span></h2>
+
             <div class="hero-buttons">
                 <a href="#projects" class="btn btn-modern-primary me-3">
                     <i class="fas fa-briefcase me-2"></i>View My Work
@@ -58,36 +66,64 @@
         </div>
     </section>
 
-    <section id="about" class="modern-section">
-        <div class="container">
-            <div class="row text-center mb-5">
-                <div class="col">
-                    <h2 class="section-title">About Me</h2>
-                    <div class="section-divider"></div>
+   <section id="about" class="modern-section about-tech">
+    <div class="container">
+        <div class="row align-items-center">
+
+        <!-- LEFT SIDE -->
+        <div class="col-lg-6 mb-4">
+            <h2 class="section-title text-start">About Me</h2>
+
+            <p class="mt-4">
+            Informatics Engineering graduate specializing in
+            Web Development and Data Analysis.
+            </p>
+
+            <p>
+            Passionate about building modern web applications,
+            solving real-world problems, and continuously improving
+            technical skills.
+            </p>
+        </div>
+
+        <!-- RIGHT SIDE (TECH CARD) -->
+        <div class="col-lg-6">
+            <div class="tech-card">
+            
+            <div class="tech-card-header">
+                <div class="dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
                 </div>
+                <span class="terminal-title">adam@portfolio:~</span>
             </div>
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="about-card">
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="about-item">
-                                    <i class="fas fa-laptop-code about-icon"></i>
-                                    <p>Passionate about creating innovative digital solutions and exploring the latest technologies in software development.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="about-item">
-                                    <i class="fas fa-graduation-cap about-icon"></i>
-                                    <p>Currently pursuing a degree in Informatics Engineering, continuously learning and developing in the field of computer science.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+            <div class="tech-card-body">
+    <pre><code>
+    <span class="key">const</span> <span class="var">adam</span> = {
+    <span class="prop">role</span>: <span class="string">"Web Developer"</span>,
+    <span class="prop">education</span>: <span class="string">"Informatics Engineering"</span>,
+    <span class="prop">gpa</span>: <span class="string">"3.84"</span>,
+    <span class="prop">skills</span>: [
+        <span class="string">"Python"</span>,
+        <span class="string">"SQL"</span>,
+        <span class="string">"PHP"</span>,
+        <span class="string">"JavaScript"</span>
+    ],
+    <span class="prop">focus</span>: <span class="string">"Web & Data"</span>
+    }
+    </code></pre>
+            </div>
+
             </div>
         </div>
+
+        </div>
+    </div>
     </section>
+
+
 
     <section id="projects" class="modern-section projects-section">
         <div class="container">
@@ -210,7 +246,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <p class="mb-0">© 2024 Adam Pradana. All rights reserved.</p>
+                    <p class="mb-0">© <span id="current-year"></span> Adam Pradana. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-md-end">
                     <div class="social-links">
@@ -220,7 +256,7 @@
                         <a href="https://github.com/Addana24" class="social-link">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="#" class="social-link">
+                        <a href="https://www.linkedin.com/in/adam-pradana-437541245" class="social-link">
                             <i class="fab fa-linkedin"></i>
                         </a>
                     </div>
@@ -232,6 +268,48 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script>
+        const roles = [
+        "Web Developer",
+        "Data Scientist",
+        "Problem Solver",
+        "Tech Enthusiast"
+        ];
+
+        const textElement = document.getElementById("changing-text");
+
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeEffect() {
+        const currentRole = roles[roleIndex];
+        
+        if (!isDeleting) {
+            // Typing
+            textElement.textContent = currentRole.substring(0, charIndex + 1);
+            charIndex++;
+
+            if (charIndex === currentRole.length) {
+            setTimeout(() => isDeleting = true, 1200); // pause sebelum delete
+            }
+        } else {
+            // Deleting
+            textElement.textContent = currentRole.substring(0, charIndex - 1);
+            charIndex--;
+
+            if (charIndex === 0) {
+            isDeleting = false;
+            roleIndex = (roleIndex + 1) % roles.length;
+            }
+        }
+
+        const typingSpeed = isDeleting ? 50 : 100;
+        setTimeout(typeEffect, typingSpeed);
+        }
+
+        typeEffect();
+
+
       function redirectToProject() {
         window.open('https://addana24.github.io/umkmrejosari', '_blank');
       }
@@ -249,6 +327,28 @@
           }
         });
       });
+
+      const toggleBtn = document.getElementById("theme-toggle");
+        const body = document.body;
+
+        // Load saved theme
+        if (localStorage.getItem("theme") === "dark") {
+        body.classList.add("dark-mode");
+        toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        toggleBtn.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+
+        if (body.classList.contains("dark-mode")) {
+            localStorage.setItem("theme", "dark");
+            toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            localStorage.setItem("theme", "light");
+            toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+        });
+
 
       // Contact form functionality
       const scriptURL = 'https://script.google.com/macros/s/AKfycbwAczijcnye_Si8WLl_Q1bKP7ndCxX5iPCPBkFGiXCXy_beKWUtse4UMu77Co_5AAw5/exec'
@@ -281,6 +381,23 @@
           navbar.classList.remove('scrolled');
         }
       });
+
+      // Auto-close navbar on mobile after clicking a link
+    const navLinks = document.querySelectorAll('.nav-link');
+    const menuToggle = document.getElementById('navbarNav');
+    const bsCollapse = new bootstrap.Collapse(menuToggle, {toggle: false});
+
+    navLinks.forEach((l) => {
+        l.addEventListener('click', () => {
+            // Cek apakah navbar sedang dalam posisi terbuka (ditunjukkan dengan class 'show')
+            if (menuToggle.classList.contains('show')) {
+                bsCollapse.hide();
+            }
+        });
+    });
+
+      // Mengatur tahun secara otomatis
+    document.getElementById("current-year").textContent = new Date().getFullYear();
     </script>
   </body>
 </html>
